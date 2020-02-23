@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1 align="center">Processed Zodiacal Model</h1>
+    
+    <div align="center">
+        <div class="content-section col-8">
+            <h2>Your Zodiacal Model</h2>
+            <img src="{{ users_zodi_plot_url }}"></img>
+        </div>
+        
+        <div class="content-section col-8">
+            <h2>Your Masked Zodiacal Model</h2>
+            <h5>Core-mask radius = {{cmr}}mas</h5>
+            <h5>Threshold Value = {{thresh}}</h5>
+            <img src="{{ masked_zodi_plot_url }}"></img>
+            
+            <a class="btn btn-outline-info mb-2" href="{{url_for('download', fname=masked_zodi_fname)}}">
+                Download your masked model.
+            </a>
+        </div>
+        
+        <div class="content-section col-8">
+            <h2>Processed Zodiacal Model<h2>
+            
+            <img src="{{ zodi_processed_plot_url }}"></img>
+            
+            <a class="btn btn-outline-info mb-2" href="{{url_for('download', fname=zodi_processed_fname)}}">
+                Download your processed model.
+            </a>
+        </div>
+    </div>
+{% endblock content %}

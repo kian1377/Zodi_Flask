@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1 align="center">Home</h1>
+    
+    <div class="content-section">
+        <h3>Purpose:</h3>
+        This site is developed so that users may upload their own zodiacal dust
+        models and process them using a datacube of WFirst PSFs. 
+        
+        <h3 class="mt-3">Functionality:</h3>
+        Currently, the only PSFs available to be used for processing are the 
+        OS5 (Observing Scenario 5) version 3.2 PSFs which are publicly 
+        available on the 
+        <a href="https://wfirst.ipac.caltech.edu/">
+            wfirst.ipac.caltech.edu
+        </a>
+         site. These PSFs use a central wavelength of 550nm. 
+        <div class="mt-3">
+        The requirements for the fits files are that it must only be a 2D array
+        (no datacubes allowed) and that it must be 256 by 256 pixels. Another requirement
+        is that the pixel scale of the fits file must be 3mas (the file can be 
+        processed if this is not the case, however, the results won't be accurate as 
+        the pixel scale used for the interpolated matrix library was 3mas). Also, 
+        the masked version of the users file and the processed version will have two
+        extra elements in their header, those elements being the core-mask radius 
+        (CMR) and the threshold (THRESH) values which the user can specify when 
+        submitting their file. If these elements happen to exist already in your 
+        fits header, then they will simply be replaced, so please consider
+        adjusting your fits header. 
+        </div>
+        
+        <h3 class="mt-3">Future Updates:</h3>
+        In the future, we are looking to add more functionality such as supporting
+        the use of more PSFs, pixel numbers, and pixel scales. 
+        <div class="mt-3">
+        Also, we are looking to add user functionality which will allow users to 
+        create their own accounts so that their files can be kept on the database
+        if they choose (this feature may take a while).
+        </div>
+        
+    </div>
+    
+    <div align="center">
+        <div class="content-section col-8" align="center">
+            <h5>
+                Example from the OS5 PSFs. Showing PSF number 2, which is for a 42.54mas
+                off-axis source. 
+            </h5>
+            
+            <img src="{{ os5_plot_url }}"></img>
+        </div>
+    </div>
+{% endblock content %}
+

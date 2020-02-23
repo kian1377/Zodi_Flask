@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1 align="center">Upload Your Zodiacal Model</h1>
+    
+    <div class="content-section">
+        <div>
+        The coremask radius defines how much the core of the data will be masked and 
+        is defined in units of milliarcseconds. The default value of the core-mask radius
+        is 0mas and the max is 200mas. The thresh field is for using a certain threshold 
+        value to mask more pixels. The thresh field is not required and the default 
+        value is None, but the minimum is 1.
+        </div>
+    </div>
+    
+    <div align="center">
+        <div class="col-5" align="left">
+            <form method="POST" action="" enctype="multipart/form-data">  
+            
+                <div class="content-section mt-4">
+                    <div class="form-group">
+                        {{ form.psfs_choice.label() }}
+                        {{ form.psfs_choice }}
+                    </div>
+                
+                    <div class="form-group">
+                        {{ form.users_zodi_file.label() }}
+                        {{ form.users_zodi_file(class="form-control-file") }}
+                            
+                        {% if form.users_zodi_file.errors %}
+                            {% for error in form.users_zodi_file.errors %}
+                                <span class="text-danger">{{ error }}</span></br>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    
+                    <div class="form-group">
+                        {{ form.cmr.label(class="form-control-file") }}
+                        {{ form.cmr() }} mas
+                        
+                        {% if form.cmr.errors %}
+                            {% for error in form.cmr.errors %}
+                                <span class="invalid-feedback">{{ error }}</span></br>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    
+                    <div class="form-group">
+                        {{ form.thresh.label(class="form-control-file") }}
+                        {{ form.thresh() }}
+                        
+                        {% if form.thresh.errors %}
+                            {% for error in form.thresh.errors %}
+                                <span class="invalid-feedback">{{ error }}</span></br>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    
+                    <div class="form-group mt-4">
+                        {{ form.submit(class="btn btn-outline-info")}}
+                    </div>
+                
+                </form>
+            </div>
+        </div>
+    </div>
+    
+{% endblock content %}
