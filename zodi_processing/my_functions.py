@@ -1,6 +1,8 @@
 import numpy as np
 from tables import *
 import astropy.units as u
+import matplotlib
+matplotlib.use('Agg') # required because matplotlib can cause crashes on the site
 import matplotlib.pyplot as plt
 import io
 import base64

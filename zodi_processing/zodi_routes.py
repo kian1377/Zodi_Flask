@@ -4,7 +4,7 @@ from zodi_processing import zodi_app, db, bcrypt
 from zodi_processing.forms import UploadZodiForm, LoginForm
 from zodi_processing.models import User
 from zodi_processing.my_functions import create_plot, process_zodi, mask_zodi
-from werkzeug import secure_filename
+from werkzeug.utils import secure_filename
 import numpy as np
 import astropy.io.fits as fits
 import os
